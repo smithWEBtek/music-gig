@@ -168,3 +168,10 @@ The project requires a numer of containers and a number of stateless functional 
 This image shows the folder structure with green highlighting the "container" components, and yellow highlight the 'stateless' components:
 
 ![](http://res.cloudinary.com/smithwebtek/image/upload/v1516839958/music-studio/container-component-list.png)
+
+
+you can see the Entity Relationship Diagram by running the following:
+
+`rails erd attributes='foreign_keys, primary_keys , content'`
+
+more info here:  https://voormedia.github.io/rails-erd/customise.html

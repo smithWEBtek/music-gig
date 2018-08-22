@@ -31,50 +31,25 @@ ActiveRecord::Schema.define(version: 20180822113952) do
     t.string "notes"
   end
 
+  create_table "gigs", force: :cascade do |t|
+    t.integer "venue_id"
+    t.integer "band_id"
+    t.datetime "downbeat"
+    t.datetime "load_in"
+    t.datetime "tear_down"
+    t.boolean "food", default: false
+    t.string "dress"
+    t.string "parking"
+    t.string "gig_notes"
+    t.string "fee"
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.string "notes"
   end
 
-  create_table "lesson_resources", force: :cascade do |t|
-    t.integer "resource_id"
-    t.integer "lesson_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "lessons", force: :cascade do |t|
-    t.date "date"
-    t.string "notes"
-    t.integer "teacher_id", default: 1
-    t.integer "student_id", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.integer "teacher_id", default: 1
-    t.integer "student_id", default: 1
-    t.integer "resource_id", default: 1
-    t.integer "lesson_id", default: 1
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "resources", force: :cascade do |t|
-    t.string "title"
-    t.string "category"
-    t.string "description"
-    t.string "format"
-    t.string "location"
-    t.string "url", default: "no_url_given"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "song_resources", force: :cascade do |t|
     t.integer "song_id"
     t.string "name"
     t.string "format"
@@ -85,27 +60,6 @@ ActiveRecord::Schema.define(version: 20180822113952) do
   create_table "songs", force: :cascade do |t|
     t.string "name"
     t.string "notes"
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.integer "level"
-    t.integer "teacher_id"
-    t.boolean "active", default: true
-    t.integer "likes", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "teachers", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "venues", force: :cascade do |t|

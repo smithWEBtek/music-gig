@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  
-  root 'api/students#index'  
-  get 'api/students/:id/resources', to: 'api/students#resources'
+	root 'api/bands#index'
+	
   namespace :api do
-    resources :teachers
-    resources :students
-    resources :lessons
+    resources :bands
+    resources :contacts
+    resources :gigs
     resources :resources
-    resources :lesson_resources
+    resources :songs
+    resources :venues
+    resources :instruments
   end
 end
