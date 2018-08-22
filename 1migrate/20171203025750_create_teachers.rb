@@ -5,8 +5,6 @@ class CreateTeachers < ActiveRecord::Migration[5.1]
       t.string :lastname
       t.string :email
       t.boolean :active, default: true
-
-      t.timestamps
     end
   end
 end

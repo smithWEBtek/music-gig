@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203033537) do
+ActiveRecord::Schema.define(version: 20180822113952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bands", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "notes"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "fname"
+    t.string "lname"
+    t.string "phone"
+    t.string "email"
+    t.string "url"
+    t.string "facebook"
+    t.string "notes"
+  end
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.string "notes"
+  end
 
   create_table "lesson_resources", force: :cascade do |t|
     t.integer "resource_id"
@@ -31,6 +52,16 @@ ActiveRecord::Schema.define(version: 20171203033537) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.integer "teacher_id", default: 1
+    t.integer "student_id", default: 1
+    t.integer "resource_id", default: 1
+    t.integer "lesson_id", default: 1
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string "title"
     t.string "category"
@@ -41,6 +72,19 @@ ActiveRecord::Schema.define(version: 20171203033537) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "song_resources", force: :cascade do |t|
+    t.integer "song_id"
+    t.string "name"
+    t.string "format"
+    t.string "key"
+    t.string "url"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
+    t.string "notes"
   end
 
   create_table "students", force: :cascade do |t|
@@ -62,6 +106,16 @@ ActiveRecord::Schema.define(version: 20171203033537) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "url"
+    t.string "phone"
+    t.string "booking_email"
+    t.integer "main_contact_id"
+    t.string "notes"
   end
 
 end
