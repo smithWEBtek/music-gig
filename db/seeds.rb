@@ -34,7 +34,7 @@ def make_contacts
   DATA_contacts[:contacts].each do |contact|
     new_contact = Contact.new
     contact.each_with_index do |attribute, i|
-      new_contact.send(DATA_contacts[:band_contact_keys][i]+"=", attribute)
+      new_contact.send(DATA_contacts[:contact_keys][i]+"=", attribute)
     end
     new_contact.save
   end
