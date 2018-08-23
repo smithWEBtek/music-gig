@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-	root 'api/bands#index'
-	
+	root to: 'api/gigs#index'
+
   namespace :api do
     resources :bands
     resources :contacts

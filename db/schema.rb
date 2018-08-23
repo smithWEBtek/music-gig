@@ -10,38 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822113952) do
+ActiveRecord::Schema.define(version: 20180823153632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "band_contacts", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "contact_id"
+  end
+
   create_table "bands", force: :cascade do |t|
     t.string "name"
-    t.string "url"
     t.string "notes"
+    t.string "url"
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.string "facebook"
     t.string "fname"
     t.string "lname"
-    t.string "phone"
-    t.string "email"
-    t.string "url"
-    t.string "facebook"
     t.string "notes"
+    t.string "phone"
+    t.string "url"
   end
 
   create_table "gigs", force: :cascade do |t|
-    t.integer "venue_id"
     t.integer "band_id"
     t.datetime "downbeat"
-    t.datetime "load_in"
-    t.datetime "tear_down"
-    t.boolean "food", default: false
     t.string "dress"
-    t.string "parking"
-    t.string "gig_notes"
     t.string "fee"
+    t.boolean "food", default: false
+    t.datetime "load_in"
+    t.string "notes"
+    t.string "parking"
+    t.integer "venue_id"
   end
 
   create_table "instruments", force: :cascade do |t|
@@ -50,10 +54,11 @@ ActiveRecord::Schema.define(version: 20180822113952) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.integer "song_id"
-    t.string "name"
     t.string "format"
     t.string "key"
+    t.string "name"
+    t.string "notes"
+    t.integer "song_id"
     t.string "url"
   end
 
@@ -63,13 +68,13 @@ ActiveRecord::Schema.define(version: 20180822113952) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string "name"
     t.string "address"
-    t.string "url"
-    t.string "phone"
     t.string "booking_email"
     t.integer "main_contact_id"
+    t.string "name"
     t.string "notes"
+    t.string "phone"
+    t.string "url"
   end
 
 end
