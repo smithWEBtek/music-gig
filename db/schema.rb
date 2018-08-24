@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824115635) do
+ActiveRecord::Schema.define(version: 20180824122922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20180824115635) do
   create_table "band_gigs", force: :cascade do |t|
     t.integer "band_id"
     t.integer "gig_id"
+  end
+
+  create_table "band_instruments", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "instrument_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -70,6 +75,11 @@ ActiveRecord::Schema.define(version: 20180824115635) do
   create_table "songs", force: :cascade do |t|
     t.string "name"
     t.string "notes"
+  end
+
+  create_table "venue_contacts", force: :cascade do |t|
+    t.integer "venue_id"
+    t.integer "contact_id"
   end
 
   create_table "venues", force: :cascade do |t|

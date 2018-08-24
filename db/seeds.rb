@@ -62,10 +62,35 @@ def make_band_contacts
   end
 end
 
+DATA_venues = {
+  :venue_keys =>
+    ["address", "booking_email", "main_contact_id", "name", "notes", "phone", "url"],
+  :venues => [
+  ['123 Main', 'gigs@grog.com', '1', 'The Grog', 'bar, downstairs', '603-444-1112', 'http://thegrog.com'],
+  ['345 Elm', 'gigs@acme.com', '2', 'Acme Bar', 'indie bar', '603-321-1322', 'http://acmebar.com'],
+  ['13 Oak', 'gigs@strangebrew.com', '3', 'The Grog', 'college hipster beer bar', '603-214-1132', 'http://strangebrew.com']
+  ]
+}
+
+def make_venues
+  DATA_venues[:venues].each do |venue|
+    new_venue = Venue.new
+    venue.each_with_index do |attribute, i|
+      new_venue.send(DATA_venues[:venue_keys][i]+"=", attribute)
+    end
+    new_venue.save
+  end
+end
+
 def main
 	make_bands
 	make_contacts
+	make_venues
+	# make_gigs
+	# make_songs
 	make_band_contacts
+	# make_band_intruments
+	# make_band_gigs
 end
 
 main
