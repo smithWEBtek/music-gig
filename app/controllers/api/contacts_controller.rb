@@ -47,7 +47,7 @@ class Api::ContactsController < ApplicationController
 			 @contact = Contact.find_by_id(params[:id])
 			 end
 		 def contact_params
-			 params.require(:contact).permit(:fname, :lname, :phone, :email, :url, :facebook :notes)
+			 params.require(:contact).permit(:fname, :lname, :phone, :email, :url, :facebook, :notes)
 		 end
  end
  
